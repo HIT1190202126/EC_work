@@ -44,7 +44,7 @@ class dataLoader:
         TYPE = re.search(r"TYPE : (.*)",String0)[1]
         DIMENSION = re.search(r"DIMENSION : (.*)",String0)[1]
         EDGE_WEIGHT_TYPE  = re.search(r"EDGE_WEIGHT_TYPE : (.*)", String0)[1]
-        Edge = []
+        NODE_COORD_SECTION = []
         split = String0.split("\n")
         for s0 in split:
             if(s0 and s0[0]<='9' and s0[0]>='0'):
@@ -54,8 +54,8 @@ class dataLoader:
                 One.append(int(one[1]))
                 One.append(int(one[2]))
                 if(One != []):
-                    Edge.append(One)
-        return  Name,COMMENT,TYPE,DIMENSION,EDGE_WEIGHT_TYPE,Edge
+                    NODE_COORD_SECTION.append(One)
+        return  Name,COMMENT,TYPE,DIMENSION,EDGE_WEIGHT_TYPE,NODE_COORD_SECTION
 
 
 
