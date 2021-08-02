@@ -25,16 +25,15 @@ class TSPProblem:
         Name, COMMENT, TYPE, DIMENSION, EDGE_WEIGHT_TYPE, NODE_COORD_SECTION = Read_data.dataLoader(pathTsp,1).Loading()
         self.Name = Name
         self.Comment = COMMENT
-        self.Dimension = int(DIMENSION)
+        self.DIMENSION = int(DIMENSION)
         self.EdgeWeightType = EDGE_WEIGHT_TYPE
-        self.Cities = NODE_COORD_SECTION
+        self.POS = NODE_COORD_SECTION
         Name, COMMENT, TYPE, DIMENSION, TOUR_SECTION = Read_data.dataLoader(pathOpt, 0).Loading()
-        if(int(DIMENSION)!= self.Dimension):
+        if(int(DIMENSION)!= self.DIMENSION):
             print("Dim Error!!")
             exit()
         self.OptSelction = TOUR_SECTION
         print("Initialization Complete")
-        self.print_info()
 
     def print_info(self):
         """

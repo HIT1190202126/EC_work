@@ -15,7 +15,7 @@ class Individual:
     def __lt__(self,other):
         return True if self.adaptability < other.adaptability else False
     #calculate distance
-    def calDis(city1,city2):
+    def calDis(self,city1,city2):
         return math.sqrt((city1[1]-city2[1])*(city1[1]-city2[1])+(city1[2]-city2[2])*(city1[2]-city2[2]))
     #construct a random array in O(n)
     def RandomTour(self):
@@ -25,6 +25,6 @@ class Individual:
             NextPos = random.randint(0, self.dimension-1)
             if NextPos not in self.tour:
                 self.tour.append(NextPos)
-                self.length = self.length + calDis(self.pos[LastPos],self.pos[NextPos])
+                self.length = self.length + self.calDis(self.pos[LastPos],self.pos[NextPos])
 
     
