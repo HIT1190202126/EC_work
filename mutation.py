@@ -30,7 +30,7 @@ class Mutation:
             idx2 = idx1
             idx1 = t
 
-        print(idx1," ",idx2)
+        # print(idx1," ",idx2)
         return idx1,idx2
     def swapMutation(self,ind):
         """
