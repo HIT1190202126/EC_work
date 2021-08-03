@@ -26,5 +26,12 @@ class Individual:
             if NextPos not in self.tour:
                 self.tour.append(NextPos)
                 self.length = self.length + self.calDis(self.pos[LastPos],self.pos[NextPos])
+            LastPos = NextPos
+    
+    #find index by city,根据值找到对应的下标 value->key
+    def find_index(self, city):
+        for i in range(0,len(self.tour)):
+            if city == self.tour[i]:
+                return i
 
     
