@@ -36,9 +36,9 @@ class Selection:
                 selected_list.append(popu.tourlist[0])
             # else, find the individual whose accurated probability is bigger than the random probability, and select it
             else:
-                for key, value in accu_probility_dic:
-                    if value > random_probability and key not in selected_list:
-                        selected_list.append(key)
+                for item in accu_probility_dic:
+                    if accu_probility_dic[item] > random_probability and item not in selected_list:
+                        selected_list.append(item)
 
         # create the new population accroding to the selected individuals
         child_population = Population(len(selected_list), tsp)
