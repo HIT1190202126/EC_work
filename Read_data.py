@@ -76,7 +76,7 @@ class dataLoader:
 
 # Test:
 if __name__ == "__main__":
-    location = "dataSet/eil51.tsp/eil51.tsp"
+    location = "dataSet/tsp/eil51.tsp"
     Name, COMMENT, TYPE, DIMENSION, EDGE_WEIGHT_TYPE, NODE_COORD_SECTION = dataLoader(location, 1).Loading()
     print(Name)
     print(COMMENT)
@@ -84,7 +84,7 @@ if __name__ == "__main__":
     print(DIMENSION)
     print(EDGE_WEIGHT_TYPE)
     print(NODE_COORD_SECTION)
-    location = "dataSet/eil51.opt.tour/eil51.opt.tour"
+    location = "dataSet/opt_tour/eil51.opt.tour"
     Name, COMMENT, TYPE, DIMENSION, TOUR_SECTION = dataLoader(location, 0).Loading()
     print(Name)
     print(COMMENT)

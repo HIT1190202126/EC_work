@@ -1,4 +1,0 @@
-filepath:dataSet/eil51.tsp
-
-population_size:10
-test EA1:

@@ -7,8 +7,8 @@ import numpy as np
 
 n = 10 
 population_size = 50
-tsp_path = "data/eil51.tsp"
-opt_path = "data/eil51.opt.tour"
+tsp_path = "data/tsp/eil51.tsp"
+opt_path = "data/opt_tour/eil51.opt.tour"
 batch_size = 1000
 
 with open("eil51_ave.txt", 'w') as f:

@@ -5,8 +5,8 @@ from TSPProblem import TSPProblem
 from Read_data import dataLoader
 
 population_size = 10
-tsp_path = "dataSet/eil51.tsp"
-opt_path = "dataSet/eil51.opt.tour"
+tsp_path = "dataSet/tsp/eil51.tsp"
+opt_path = "dataSet/opt_tour/eil51.opt.tour"
 batch_size = 1000
 
 with open("eil51.txt", 'w') as f:
