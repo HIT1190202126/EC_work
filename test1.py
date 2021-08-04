@@ -46,8 +46,8 @@ with open("eil51.txt", 'w') as f:
                 f.write(str(len))
                 f.write("\n")
                 i += 1
-            """
 
+            """
             # test ea2
             f.write("test ea2:")
             f2.write("test ea2:\n")
@@ -79,6 +79,7 @@ with open("eil51.txt", 'w') as f:
                 f.write(str(len))
                 f.write("\n")
                 i += 1
+
             print(1)
             f.write("***********************************************")
             f2.write("***********************************************")
