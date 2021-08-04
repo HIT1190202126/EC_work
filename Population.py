@@ -1,4 +1,4 @@
-import Individual
+from Individual import  Individual
 
 
 class Population:
@@ -22,7 +22,7 @@ class Population:
     # for all individual, set the length of each individual
     def set_length(self):
         for individual in self.tourlist:
-            individual.setLength()
+            individual.calDis()
 
     # for all individual, set the adaptability of each individual
     def set_adaptability(self):

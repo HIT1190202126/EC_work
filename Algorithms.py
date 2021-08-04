@@ -19,7 +19,7 @@ batch_size: number of generations
 def EA1(population_size, tsp_path, opt_path, batch_size):
     mutation_possibility = 6
     tsp = TSPProblem(tsp_path, opt_path)
-    pop = Population(population_size, tsp)
+    pop = Population(tsp, population_size)
     # initial
     pop.ini_tourlist()
     pop.set_length()
@@ -78,7 +78,7 @@ order crossover + scramble_mutation + elitism_selection
 def EA2(population_size, tsp_path, opt_path, batch_size):
     mutation_possibility = 6
     tsp = TSPProblem(tsp_path, opt_path)
-    pop = Population(population_size, tsp)
+    pop = Population(tsp, population_size)
     # initial
     pop.ini_tourlist()
     pop.set_length()
@@ -143,7 +143,7 @@ order crossover + inversion_mutation + elitism_selection
 def EA3(population_size, tsp_path, opt_path, batch_size):
     mutation_possibility = 6
     tsp = TSPProblem(tsp_path, opt_path)
-    pop = Population(population_size, tsp)
+    pop = Population(tsp, population_size)
 
     # initial
     pop.ini_tourlist()

@@ -16,7 +16,7 @@ with open("eil51.txt", 'w') as f:
         for population_size in (10, 20, 50, 100):
             f.write("\n")
             f2.write("\n")
-            f.wrtie("population_size:%d\n" % population_size)
+            f.write("population_size:%d\n" % population_size)
             f2.write("population_size:%d\n" % population_size)
 
             f.write("ans:\n")

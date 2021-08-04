@@ -18,7 +18,8 @@ class Individual:
 
     # calculate distance
     def calDis(self):
-        # return math.sqrt((city1[1] - city2[1]) * (city1[1] - city2[1]) + (city1[2] - city2[2]) * (city1[2] - city2[2]))
+        # return math.sqrt((city1[1] - city2[1]) * (city1[1] - city2[1]) + (city1[2] - city2[2]) * (city1[2] - city2[
+        # 2]))
         self.length = 0
         for i in range(self.dimension - 1):
             cityone = self.pos[int(self.tour[i]) - 1]
