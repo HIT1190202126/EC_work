@@ -17,8 +17,17 @@ class Individual:
         return True if self.adaptability < other.adaptability else False
 
     # calculate distance
-    def calDis(self, city1, city2):
-        return math.sqrt((city1[1] - city2[1]) * (city1[1] - city2[1]) + (city1[2] - city2[2]) * (city1[2] - city2[2]))
+    def calDis(self):
+        # return math.sqrt((city1[1] - city2[1]) * (city1[1] - city2[1]) + (city1[2] - city2[2]) * (city1[2] - city2[2]))
+        self.length = 0
+        for i in range(self.dimension - 1):
+            cityone = self.pos[int(self.tour[i]) - 1]
+            citytwo = self.pos[int(self.tour[i + 1]) - 1]
+            x1 = cityone[1]
+            y1 = cityone[2]
+            x2 = citytwo[1]
+            y2 = citytwo[2]
+            self.length = self.length + math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1))
 
     # construct a random array in O(n)
     def RandomTour(self):

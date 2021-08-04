@@ -1,3 +1,6 @@
+import Individual
+
+
 class Population:
 
     def __init__(self, tsp, len):

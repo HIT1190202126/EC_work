@@ -1,4 +1,5 @@
 import random
+import Population
 
 
 class Selection:
@@ -88,7 +89,7 @@ class Selection:
         :return: the selected individuals
         """
         poup = Population(tsp, len)
-        temp_list = popu.tourlist
+        temp_list = poup.tourlist
         # sort all of them by their fitness
         temp_list.sort()
         # select the top n individuals
