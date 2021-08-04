@@ -1,7 +1,8 @@
 import random
 
+
 class Selection:
-    def fitness_proportional_selection(self, n, tsp ,len):
+    def fitness_proportional_selection(self, n, tsp, len):
         """
         fitness poportionate selection,
         calculate the fitness of each individual,
@@ -15,13 +16,13 @@ class Selection:
         """
 
         popu = Population(tsp, len)
-        sum = 0 #the sum of adaptabiliity
+        sum = 0  # the sum of adaptabiliity
         probabilitydict = {}
         for individual in popu.tourlist:
             sum += individual.adaptability
         for individual in popu.tourlist:
-            probabilitydict[individual] = individual.adaptability/sum
-        accu_probility_dic = {} # the probability of accumulation
+            probabilitydict[individual] = individual.adaptability / sum
+        accu_probility_dic = {}  # the probability of accumulation
         accu = 0
         for individual in popu.tourlist:
             accu += probabilitydict[individual]
@@ -32,7 +33,7 @@ class Selection:
         while len(selected_list) < n:
             random_probability = random.random()
             # if the fitness of the first individual is bigger than the random_probability, select the first one
-            if accu_probility_dic[popu.tourlist[0]]>random_probability and popu.tourlist[0] not in selected_list:
+            if accu_probility_dic[popu.tourlist[0]] > random_probability and popu.tourlist[0] not in selected_list:
                 selected_list.append(popu.tourlist[0])
             # else, find the individual whose accurated probability is bigger than the random probability, and select it
             else:
@@ -62,12 +63,12 @@ class Selection:
         while len(selected_list) < n:
             k_individule_list = []
             while len(k_individule_list) < k:
-                random_id = random.randint(0, len-1)
+                random_id = random.randint(0, len - 1)
                 # select the individual corresponding random id
                 if popu.tourlist[random_id] not in k_individule_list:
                     k_individule_list.append(popu.tourlist[random_id])
             # sort them by their fitness
-            k_individule_list.sort(reverse = True)
+            k_individule_list.sort(reverse=True)
             # select the biggest one, and it cannot be selected before
             for i in range(k):
                 if k_individule_list[i] not in selected_list:
@@ -76,7 +77,7 @@ class Selection:
         child_population.tourlist = selected_list
         return child_population
 
-    def elitism_selection(self, n ,tsp, len):
+    def elitism_selection(self, n, tsp, len):
         """
         According to the fitness ranking,
         select the first n individuals with the highest fitness.
