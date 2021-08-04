@@ -16,7 +16,6 @@ class Individual:
     def __lt__(self, other):
         return True if self.adaptability < other.adaptability else False
 
-
     def calDis(self):
         """
         Get the length of this individual
@@ -31,14 +30,15 @@ class Individual:
             y2 = citytwo[2]
             self.length = self.length + math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1))
 
-    def calDis2(self,city1,city2):
+    def calDis2(self, city1, city2):
         """
         return math.sqrt((city1[1] - city2[1]) * (city1[1] - city2[1]) + (city1[2] - city2[2]) * (city1[2
         :param city1:
         :param city2:
         :return:
         """
-        return math.sqrt((city1[1]-city2[1])*(city1[1]-city2[1])+(city1[2]-city2[2])*(city1[2]-city2[2]))
+        return math.sqrt((city1[1] - city2[1]) * (city1[1] - city2[1]) + (city1[2] - city2[2]) * (city1[2] - city2[2]))
+
     # construct a random array in O(n)
     def RandomTour(self):
         LastPos = random.randint(0, self.dimension - 1)
