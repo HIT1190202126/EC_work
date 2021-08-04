@@ -30,13 +30,14 @@ with open("eil51.txt", 'w') as f:
             f.write("\n")
 
             # test EA1
+            """
             f.write("test EA1:")
             f2.write("test EA1:\n")
             log_tour, log_len = EA1(population_size, tsp_path, opt_path, batch_size)
             for tour in log_tour:
                 tour = [str(x) for x in tour]
                 s = ' '.join(tour)
-                f2.wrtie(s)
+                f2.write(s)
                 f2.write("\n")
 
             i = 1
@@ -45,6 +46,7 @@ with open("eil51.txt", 'w') as f:
                 f.write(str(len))
                 f.write("\n")
                 i += 1
+            """
 
             # test ea2
             f.write("test ea2:")

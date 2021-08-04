@@ -2,6 +2,7 @@ import Individual
 import TSPProblem
 import random
 
+from Individual import Individual
 
 class crossOver:
     def __init__(self, size, tsp):

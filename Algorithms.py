@@ -6,6 +6,9 @@ import mutation
 from Population import Population
 from Individual import Individual
 from TSPProblem import TSPProblem
+from Selection import Selection
+from crossOver import crossOver
+from mutation import Mutation
 
 """
 pmx_crossover+swap_mutation+tournament_selection
@@ -22,6 +25,7 @@ def EA1(population_size, tsp_path, opt_path, batch_size):
     pop = Population(tsp, population_size)
     # initial
     pop.ini_tourlist()
+
     pop.set_length()
     pop.set_adaptability()
 
@@ -30,7 +34,9 @@ def EA1(population_size, tsp_path, opt_path, batch_size):
 
     for i in range(batch_size):
         # optimize 1/3 parents
-        parents_pop = Selection.tournament_selection(int(pop.len / 3), 3, tsp, pop.len)
+        t =pop.len
+        parents_pop = Selection().tournament_selection(int(pop.len / 3), 3, tsp, t)
+
 
         # cross random from parents
         child_list = []
@@ -41,7 +47,7 @@ def EA1(population_size, tsp_path, opt_path, batch_size):
             pa2 = parents_pop.tourlist[pa2]
 
             # cross
-            ch1, ch2 = crossOver.PMX_crossover(pa1, pa2)
+            ch1, ch2 = crossOver(size=0,tsp=tsp).PMX_crossover(pa1, pa2)
             child_list.append(ch1)
             child_list.append(ch2)
 
@@ -49,7 +55,7 @@ def EA1(population_size, tsp_path, opt_path, batch_size):
             rate = random.randint(1, 10)
             # mutation
             if rate <= mutation_possibility:
-                child_list[j] = mutation.swapMutation(child_list[j])
+                child_list[j] = Mutation(size = 0,tspproblem= tsp).swapMutation(child_list[j])
         
         # make the child population
         pop = Population(tsp, population_size)
@@ -83,16 +89,14 @@ def EA2(population_size, tsp_path, opt_path, batch_size):
     pop.ini_tourlist()
     pop.set_length()
     pop.set_adaptability()
-
     log_tour = []
     log_len = []
 
     for i in range(batch_size):
         # optimize 1/3 parents
-        parents_list = Selection.elitism_selection(int(pop.len / 3), tsp, pop.len)
-        parents_pop = Population(int(pop.len / 3), tsp, pop.len)
+        parents_list = Selection().elitism_selection(int(pop.len / 3), tsp, pop.len)
+        parents_pop = Population(tsp, pop.len)
         parents_pop.tourlist = parents_list
-
         child_list = []
         # cross random from parents
         if len(parents_list) % 2 == 0:
@@ -103,6 +107,7 @@ def EA2(population_size, tsp_path, opt_path, batch_size):
         while len(child_list) != population_size:
             pa1 = random.randint(0, parents_pop.len - 1)
             pa2 = random.randint(0, parents_pop.len - 1)
+            print(parents_pop.tourlist)
             pa1 = parents_pop.tourlist[pa1]
             pa2 = parents_pop.tourlist[pa2]
 

@@ -17,6 +17,7 @@ class Population:
     def ini_tourlist(self):
         for i in range(self.len):
             ind = Individual(self.tsp)
+            ind.RandomTour()
             self.tourlist.append(ind)
 
     # for all individual, set the length of each individual
