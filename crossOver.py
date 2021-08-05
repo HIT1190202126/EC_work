@@ -2,6 +2,7 @@ import Individual
 import TSPProblem
 import random
 
+from Individual import Individual
 
 class crossOver:
     def __init__(self, size, tsp):
@@ -33,6 +34,8 @@ class crossOver:
         for i in range(len(cy)):
             child1.tour[cy[i]] = parent1.tour[cy[i]]
             child2.tour[cy[i]] = parent2.tour[cy[i]]
+        child2.calDis()
+        child1.calDis()
         return child1, child2
 
     def order_crossover(self, parent1, parent2):
@@ -41,7 +44,7 @@ class crossOver:
         child2 = Individual(self.tsp)
 
         # randomly choose a part from parent
-        startgene = random.randin(0, self.dimension - 2)
+        startgene = random.randint(0, self.dimension - 2)
         endgene = random.randint(startgene + 1, self.dimension - 1)
 
         # Copy process
@@ -53,8 +56,11 @@ class crossOver:
                 child1.tour.append(parent2.tour[i])
             i = i + 1
 
-        for cnt in range(endgene - startgene + 1):
+        for cnt in range(endgene - startgene ):
             child1.tour.append(gene1[cnt])
+
+
+
 
         while len(child1.tour) < self.dimension:
             if parent2.tour[i] not in gene1:
@@ -69,7 +75,7 @@ class crossOver:
                 child2.tour.append(parent1.tour[i])
             i = i + 1
 
-        for cnt in range(endgene - startgene + 1):
+        for cnt in range(endgene - startgene ):
             child2.tour.append(gene2[cnt])
 
         while len(child2.tour) < self.dimension:
@@ -77,6 +83,8 @@ class crossOver:
                 child2.tour.append(parent1.tour[i])
             i = i + 1
 
+        child2.calDis()
+        child1.calDis()
         return child1, child2
 
     def PMX_crossover(self, parent1, parent2):
@@ -117,4 +125,6 @@ class crossOver:
             while child2.tour[i] in dic2.keys():
                 child2.tour[i] = dic2[child2.tour[i]]
 
+        child2.calDis()
+        child1.calDis()
         return child1, child2

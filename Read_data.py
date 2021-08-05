@@ -49,9 +49,9 @@ class dataLoader:
             if (s0 and s0[0] <= '9' and s0[0] >= '0'):
                 one = s0.split(" ")
                 One = []
-                One.append(int(one[0]))
-                One.append(int(one[1]))
-                One.append(int(one[2]))
+                One.append(float(one[0]))
+                One.append(float(one[1]))
+                One.append(float(one[2]))
                 if (One != []):
                     NODE_COORD_SECTION.append(One)
         return Name, COMMENT, TYPE, DIMENSION, EDGE_WEIGHT_TYPE, NODE_COORD_SECTION

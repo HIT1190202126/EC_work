@@ -1,9 +1,9 @@
 import random
 import Population
-
+from  Population import Population
 
 class Selection:
-    def fitness_proportional_selection(self, n, tsp, len):
+    def fitness_proportional_selection(self, n, tsp, len2):
         """
         fitness poportionate selection,
         calculate the fitness of each individual,
@@ -16,7 +16,7 @@ class Selection:
         :return: the selected individuals
         """
 
-        popu = Population(tsp, len)
+        popu = Population(tsp, len2)
         sum = 0  # the sum of adaptabiliity
         probabilitydict = {}
         for individual in popu.tourlist:
@@ -47,7 +47,7 @@ class Selection:
         child_population.tourlist = selected_list
         return child_population
 
-    def tournament_selection(self, n, k, tsp, len):
+    def tournament_selection(self, n, k, tsp, len2, popu):
         """
         k individuals are selected each time,
         and the best one of the k individuals is selected according to the fitness.
@@ -56,15 +56,16 @@ class Selection:
         :param k: the number of selected individuals of each time
         :param n: the number of selected individuals
         :param tsp: tsp problem
-        :param len: the number of all individuals
+        :param len2: the number of all individuals
         :return: the selected individuals
         """
-        popu = Population(tsp, len)
+
+
         selected_list = []
         while len(selected_list) < n:
             k_individule_list = []
             while len(k_individule_list) < k:
-                random_id = random.randint(0, len - 1)
+                random_id = random.randint(0, len2 - 1)
                 # select the individual corresponding random id
                 if popu.tourlist[random_id] not in k_individule_list:
                     k_individule_list.append(popu.tourlist[random_id])
@@ -74,11 +75,11 @@ class Selection:
             for i in range(k):
                 if k_individule_list[i] not in selected_list:
                     selected_list.append(k_individule_list[i])
-        child_population = Population(len(selected_list), tsp)
+        child_population = Population( tsp,len(selected_list))
         child_population.tourlist = selected_list
         return child_population
 
-    def elitism_selection(self, n, tsp, len):
+    def elitism_selection(self, n, tsp, len2, popu):
         """
         According to the fitness ranking,
         select the first n individuals with the highest fitness.
@@ -86,14 +87,14 @@ class Selection:
         :param n: the number of selected individuals
         :param tsp: tsp problem
         :param len: the number of all individuals
-        :return: the selected individuals
+        :return: the selected individuals List
         """
-        poup = Population(tsp, len)
-        temp_list = poup.tourlist
+        temp_list = popu.tourlist
+
         # sort all of them by their fitness
-        temp_list.sort()
+        temp_list.sort(reverse=True)
         # select the top n individuals
         selected_list = temp_list[:n]
-        child_population = Population(len(selected_list), tsp)
-        child_population.tourlist = selected_list
-        return child_population
+
+
+        return selected_list

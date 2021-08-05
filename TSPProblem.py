@@ -35,7 +35,7 @@ class TSPProblem:
             print("Dim Error!!")
             exit()
         self.OptSelction = TOUR_SECTION
-        print("Initialization Complete")
+        #print("Initialization Complete")
 
     def print_info(self):
         """
@@ -46,7 +46,7 @@ class TSPProblem:
         print("Comment:\t", self.Comment)
         print("EdgesWeghtType:\t", self.EdgeWeightType)
         print("--------Cities--------")
-        for t in self.Cities:
+        for t in self.POS:
             print("City: ", t[0], "\t<", t[1], "\t", t[2], ">")
 
         print("-------- OptPath --------\n", self.OptSelction)
@@ -59,7 +59,7 @@ class TSPProblem:
         """
         fig, ax0 = plt.subplots()
         # label out the points
-        for e0 in self.Cities:
+        for e0 in self.POS:
             ax0.scatter(e0[1], e0[2], c='b', s=20, alpha=0.5)
         # connet the cities
         StartingPoint = int(route[0])
@@ -67,10 +67,10 @@ class TSPProblem:
         for k in route:
             if i == 0:
                 i = 1
-                dst = self.Cities[k - 1]
+                dst = self.POS[k - 1]
             else:
                 src = dst
-                dst = self.Cities[k - 1]
+                dst = self.POS[k - 1]
                 ax0.add_line(Line2D([src[1], dst[1]], [src[2], dst[2]], linewidth=1, color='r'))
         plt.plot()
         plt.show()
@@ -85,9 +85,14 @@ class TSPProblem:
     def plotOpt(self):
         self.plot(self.OptSelction)
 
+    def get_opt_tour(self,path0):
+        Name, COMMENT, TYPE, DIMENSION, TOUR_SECTION = Read_data.dataLoader(path0, 0).Loading()
+        self.OptSelction = TOUR_SECTION
+        print("get OPT !")
+
 
 if __name__ == "__main__":
-    location1 = "dataSet/eil51.tsp/eil51.tsp"
-    location2 = "dataSet/eil51.opt.tour/eil51.opt.tour"
+    location1 = "dataSet/tsp/pcb442.tsp"
+    location2 = "dataSet/opt_tour/pcb442.opt.tour"
     TSP0 = TSPProblem(location1, location2)
     TSP0.plotOpt()

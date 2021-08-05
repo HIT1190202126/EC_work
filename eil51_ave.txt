@@ -1,0 +1,9 @@
+filepath:dataSet/tsp/eil51.tsp
+
+0
+ans:
+average ea3:
+batch_size:10000
+
+***********************************************average cost:nan
+standard deviation:nan
