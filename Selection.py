@@ -1,6 +1,7 @@
 import random
 import Population
-from  Population import Population
+from Population import Population
+
 
 class Selection:
     def fitness_proportional_selection(self, n, tsp, len2):
@@ -60,7 +61,6 @@ class Selection:
         :return: the selected individuals
         """
 
-
         selected_list = []
         while len(selected_list) < n:
             k_individule_list = []
@@ -75,7 +75,7 @@ class Selection:
             for i in range(k):
                 if k_individule_list[i] not in selected_list:
                     selected_list.append(k_individule_list[i])
-        child_population = Population( tsp,len(selected_list))
+        child_population = Population(tsp, len(selected_list))
         child_population.tourlist = selected_list
         return child_population
 
@@ -95,6 +95,5 @@ class Selection:
         temp_list.sort(reverse=True)
         # select the top n individuals
         selected_list = temp_list[:n]
-
 
         return selected_list

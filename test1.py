@@ -7,7 +7,8 @@ from Read_data import dataLoader
 population_size = 10
 tsp_path = "dataSet/tsp/eil51.tsp"
 opt_path = "dataSet/opt_tour/eil51.opt.tour"
-batch_size = 10000
+batch_size = 20000
+
 
 with open("eil51.txt", 'w') as f:
     with open('ei51_log.txt', 'w') as f2:
@@ -29,15 +30,18 @@ with open("eil51.txt", 'w') as f:
             ans.calDis()
             f.write(str(ans.length))
             f.write("\n")
+            print("ans:"+str(ans.length))
+            print("pop_size:%d" % population_size)
+
             # test EA1
             print("TestEA1")
-            f.write("test EA1:")
+            f.write("test EA1:\n")
             f2.write("test EA1:\n")
             log_tour, log_len = EA1(population_size, tsp_path, opt_path, batch_size)
 
             for tour in log_tour:
-                tour = [str(x) for x in tour]
-                s = ' '.join(tour)
+                tour_new = [str(x) for x in tour]
+                s = ' '.join(tour_new)
                 f2.write(s)
                 f2.write("\n")
 
@@ -46,43 +50,43 @@ with open("eil51.txt", 'w') as f:
             for len in log_len:
                 f.write("batch_size:%d\n" % (i * 5000))
                 f.write(str(len))
-                f.write("\n")
+                f.write("\n\n")
                 i += 1
-            
+
             # test ea2
 
             print("TestEA2")
-            f.write("test ea2:")
-            f2.write("test ea2:\n")
-            log_tour, log_len,pop = EA2(population_size, tsp_path, opt_path, batch_size)
+            f.write("test EA2:\n")
+            f2.write("test EA2:\n")
+            log_tour, log_len, pop = EA2(population_size, tsp_path, opt_path, batch_size)
             for tour in log_tour:
-                tour = [str(x) for x in tour]
-                s = ' '.join(tour)
+                tour_new = [str(x) for x in tour]
+                s = ' '.join(tour_new)
                 f2.write(s)
                 f2.write("\n")
             i = 1
             for len in log_len:
                 f.write("batch_size:%d\n" % (i * 5000))
                 f.write(str(len))
-                f.write("\n")
+                f.write("\n\n")
                 i += 1
 
             # test ea3
 
             print("TestEA3")
-            f.write("test ea3:")
-            f2.write("test ea3:\n")
-            log_tour, log_len = EA3(population_size, tsp_path, opt_path, batch_size)
+            f.write("test EA3:\n")
+            f2.write("test EA3:\n")
+            log_tour, log_len, pop = EA3(population_size, tsp_path, opt_path, batch_size)
             for tour in log_tour:
-                tour = [str(x) for x in tour]
-                s = ' '.join(tour)
+                tour_new = [str(x) for x in tour]
+                s = ' '.join(tour_new)
                 f2.write(s)
                 f2.write("\n")
             i = 1
             for len in log_len:
                 f.write("batch_size:%d\n" % (i * 5000))
                 f.write(str(len))
-                f.write("\n")
+                f.write("\n\n")
                 i += 1
             print(1)
             f.write("***********************************************")

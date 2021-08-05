@@ -1,0 +1,12 @@
+filepath:dataSet/tsp/pr2392.tsp
+
+population_size:20
+ans:
+377962.8211915631
+test EA3:batch_size:5000
+15006692.5935914
+batch_size:10000
+6051034.035352153
+***********************************************
+average cost:6051034.035352153
+ standard deviation:0.0
